@@ -41,6 +41,7 @@ import com.android.launcher3.util.MultiValueAlpha;
 import com.android.launcher3.util.NavigationMode;
 import com.android.quickstep.TaskOverlayFactory.OverlayUICallbacks;
 import com.android.quickstep.util.LayoutUtils;
+import com.android.launcher3.util.VibratorWrapper;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -181,6 +182,8 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         screenshotButton.setOnClickListener(this);
         mSplitButton = findViewById(R.id.action_split);
         mSplitButton.setOnClickListener(this);
+        View clearallButton = findViewById(R.id.action_clear_all);
+        clearallButton.setOnClickListener(this);
         mSaveAppPairButton.setOnClickListener(this);
     }
 
@@ -200,11 +203,17 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         }
         int id = view.getId();
         if (id == R.id.action_screenshot) {
+            VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
             mCallbacks.onScreenshot();
         } else if (id == R.id.action_split) {
+            VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
             mCallbacks.onSplit();
         } else if (id == R.id.action_save_app_pair) {
+            VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
             mCallbacks.onSaveAppPair();
+        } else if (id == R.id.action_clear_all) {
+            VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
+            mCallbacks.onClearAllTasksRequested();
         }
     }
 
