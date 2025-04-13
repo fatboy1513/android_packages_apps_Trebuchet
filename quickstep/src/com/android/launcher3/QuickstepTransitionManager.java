@@ -729,9 +729,10 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
             }
         });
 
-        final float initialWindowRadius = supportsRoundedCornersOnWindows(mLauncher.getResources())
-                ? Math.max(crop.width(), crop.height()) / 2f
-                : 0f;
+        // final float initialWindowRadius = supportsRoundedCornersOnWindows(mLauncher.getResources())
+        //         ? Math.max(crop.width(), crop.height()) / 2f
+        //         : 0f;
+        final float initialWindowRadius = 100f;
         final float finalWindowRadius = mDeviceProfile.isMultiWindowMode
                 ? 0 : getWindowCornerRadius(mLauncher);
         final float finalShadowRadius = appTargetsAreTranslucent ? 0 : mMaxShadowRadius;
